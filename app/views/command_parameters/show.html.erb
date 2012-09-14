@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @command_parameter.name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @command_parameter.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_command_parameter_path(@command_parameter) %> |
+<%= link_to 'Back', command_parameters_path %>

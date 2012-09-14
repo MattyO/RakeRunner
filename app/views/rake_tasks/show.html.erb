@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Task:</b>
+  <%= @rake_task.task %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @rake_task.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_rake_task_path(@rake_task) %> |
+<%= link_to 'Back', rake_tasks_path %>

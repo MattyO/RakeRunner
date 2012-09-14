@@ -1,0 +1,12 @@
+sSB3Kdo72RakeRunner
+
+packages to install apt-get
+nginx
+ruby1.9.1
+ruby1.9.1-dev //devleopment headers
+mysql-server
+build-essential
+git
+
+gems 
+unicorn

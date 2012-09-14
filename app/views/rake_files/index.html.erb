@@ -1,0 +1,20 @@
+<h1>Rake Files Uploaded</h1>
+
+<div class="row">
+  <div class="span6">
+    <table class="table table-striped">
+      <tr>
+        <th>Filename</th>
+      </tr>
+
+    <% @rake_files.each do |rake_file| %>
+      <tr>
+        <td><%= rake_file.file_name %></td>
+      </tr>
+    <% end %>
+    </table>
+  <div>
+</div>
+<br />
+
+<%= link_to 'New Rake file', new_rake_file_path %>

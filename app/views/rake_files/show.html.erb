@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Active:</b>
+  <%= @rake_file.active %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @rake_file.path %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%= @rake_file.file_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_rake_file_path(@rake_file) %> |
+<%= link_to 'Back', rake_files_path %>

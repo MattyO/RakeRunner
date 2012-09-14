@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Canaddusers:</b>
+  <%= @permission.canAddUsers %>
+</p>
+
+<p>
+  <b>Canupdateuserpermission:</b>
+  <%= @permission.canUpdateUserPermission %>
+</p>
+
+<p>
+  <b>Canupload:</b>
+  <%= @permission.canUpload %>
+</p>
+
+
+<%= link_to 'Edit', edit_permission_path(@permission) %> |
+<%= link_to 'Back', permissions_path %>

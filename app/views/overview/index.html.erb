@@ -1,0 +1,22 @@
+
+<div class="row">
+  <div class="span6">
+    <h2> Rake Tasks </h2>
+    <table class="table table-striped">
+      <tr>
+        <th class="span2">Task</th>
+        <th class="span2">Filename </th>
+        <th class="span1"></th>
+      </tr>
+
+    <% @rake_tasks.each do |rake_task| %>
+      <tr>
+        <td><%= rake_task.task %></td>
+        <td><%= rake_task.rake_file.file_name %></td>
+        <td> <a class="btn" href= <%= "/run/#{rake_task.rake_file.file_name}/#{rake_task.task}/"%>> Run </a></td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
+
