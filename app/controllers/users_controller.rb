@@ -1,6 +1,25 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+
+  def login
+    if request.post? 
+      #redirect to root url with flash
+      user = params[:user] 
+      user = User.where(:email=>user[:email], :password=>user[:password]).first;
+      if user != nil
+        session[User.sessionSymbol] = user.id
+        redirect_to root_path
+      else
+        @error = 'Could not authenticate user'
+      end 
+    end
+  end
+
+  def logout
+    session[User.sessionSymbol] = nil
+  end
+
   def index
     @users = User.all
 

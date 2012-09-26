@@ -1,1 +1,4 @@
 <h1>You just ran a rake file </h1>
+<p> It's output can be found in run history id <%= @run_history.id%> </p>
+<p> <%= link_to "output", "/run_history/#{@run_history.id}/output.json" %> </p>
+<p> <%= link_to "after line 2", "/run_history/#{@run_history.id}/tail/2.json" %> </p>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  task: 
+  enqueued: 2012-09-20 15:59:23
+  started: 2012-09-20 15:59:23
+  finished: 2012-09-20 15:59:23
+  filename: MyString
+  status: MyString
+
+two:
+  task: 
+  enqueued: 2012-09-20 15:59:23
+  started: 2012-09-20 15:59:23
+  finished: 2012-09-20 15:59:23
+  filename: MyString
+  status: MyString

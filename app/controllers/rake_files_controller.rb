@@ -11,10 +11,14 @@ class RakeFilesController < ApplicationController
   end
 
   def run  
-    #puts "filename: #{params[:file_name]}, "
-    file= RakeFile.where(:file_name=>params[:rake_file]).first
-    file.run params[:task];
+    task = RakeTask.joins(:rake_file).where(:task=>params["task"], :rake_files=>{:file_name=>params[:rake_file]}).first
+    @run_history = task.delay_run 
+    
 
+    respond_to do |format|
+      format.html
+      format.json {render json: @run_history.output} 
+    end
   end
 
   # GET /rake_files/1

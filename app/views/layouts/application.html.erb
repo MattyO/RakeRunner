@@ -1,15 +1,32 @@
-<!DOCTYPE html> <html>
-<head lang="en">
+<!DOCTYPE html> 
+<html lang="en">
+<head >
   <title>Rakerunner</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "bootstrap.min" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "RakeRunner", root_path, :class=>"brand" %>
+        <ul class="nav">
+          <li> <%= link_to "Upload Rake File", new_rake_file_path %> </li>
+        </ul>
+        <ul class="nav pull-right">
+          <% if @user.nil? %>
+          <li> <%= link_to "Login", 'login' %> </li>
+          <% else %>
+          <li> <%= link_to @user.name, @user %></li>
+          <li> <%= link_to "Logout", 'logout' %> </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
   <div class="container">
-    <h1> RakeRunner </h1>
     <%= yield %>
   </div>
 </body>

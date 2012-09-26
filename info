@@ -7,6 +7,19 @@ ruby1.9.1-dev //devleopment headers
 mysql-server
 build-essential
 git
+libmysqlclient-dev
 
 gems 
 unicorn
+bundler
+
+pull down 
+nginx config to /etc/nginx/nginx.conf
+unicorn config to /var/www/RakeRunner/config/unicorn.rb
+
+change paths in each of these
+
+/etc/init.d/nginx start to start nginx
+
+rails_unicorn to start unicorn
+

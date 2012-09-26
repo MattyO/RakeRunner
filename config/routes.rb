@@ -11,9 +11,22 @@ Rakerunner::Application.routes.draw do
 
   resources :users
 
+  resources :run_history
+
   match 'run/:rake_file/:task' => 'rake_files#run'
 
   match 'overview' => 'overview#index'
+
+  match 'twilio' => 'twilio#index'
+
+  match 'login' => 'users#login'
+  
+  match 'logout' => 'user#logout'
+
+  match 'run_history/:id/output' => 'run_history#output'
+
+  match 'run_history/:id/tail/:line' => 'run_history#tail_output'
+
 
 
   # The priority is based upon order of creation:

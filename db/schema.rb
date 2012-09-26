@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120827183251) do
+ActiveRecord::Schema.define(:version => 20120920195923) do
 
   create_table "command_parameters", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(:version => 20120827183251) do
     t.datetime "updated_at",   :null => false
     t.integer  "rake_task_id"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "permissions", :force => true do |t|
     t.boolean  "canAddUsers"
@@ -47,6 +63,19 @@ ActiveRecord::Schema.define(:version => 20120827183251) do
     t.integer  "user_id"
     t.integer  "rake_file_id"
   end
+
+  create_table "run_histories", :force => true do |t|
+    t.integer  "rake_task_id"
+    t.datetime "enqueued"
+    t.datetime "started"
+    t.datetime "finished"
+    t.string   "filename"
+    t.string   "status"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "run_histories", ["rake_task_id"], :name => "index_run_histories_on_rake_task_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"

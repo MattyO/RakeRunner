@@ -6,7 +6,7 @@ class TwilioController < ApplicationController
 
     bodyParts = body.split ' '
     file = bodyParts.shift
-    task = bodyPars.shirt
+    task = bodyPars.shift
     args = bodyParts
 
     rakeFile = RakeFile.where(:file_name=>file).first;
