@@ -1,15 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h1>
   <b>Task:</b>
   <%= @rake_task.task %>
+</h1>
+
+<p>
+  <b>Status:</b>
+  <% if @rake_task.active %> 
+    Active
+  <% else %>
+   Inactive
+  <% end %>
 </p>
 
 <p>
-  <b>Active:</b>
-  <%= @rake_task.active %>
+  <b>Contributing Rake File:</b>
+  <%= @rake_task.rake_file.file_name%>
 </p>
+<h2> Run History </h2> 
+<table class="table table-striped"> 
+  <tr> 
+    <th> Enqueued </th>
+    <th> Started </th>
+    <th> Finished  </th>
+    <th> Output </th>
+  </tr>
+  <% @rake_task.run_history.reorder('started').reverse.each do |history| %>
+    <tr> 
+      <td> <%= history.enqueued.try(:strftime,"%A %B %e at %l:%M %P") %> </td>
+      <td> <%= history.started.try(:strftime,"%A %B %e at %l:%M %P") %> </td>
+      <td> <%= history.finished.try(:strftime,"%A %B %e at %l:%M %P") %> </td>
+      <td> <%=  link_to "Output", history %> </td>
+    </tr>
+  <% end%>
+  
+</table>
 
-
-<%= link_to 'Edit', edit_rake_task_path(@rake_task) %> |
-<%= link_to 'Back', rake_tasks_path %>

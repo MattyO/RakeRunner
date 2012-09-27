@@ -1,6 +1,6 @@
 class RunHistoryController < ApplicationController
   def index
-    @run_history = RunHistory.all.limit 100
+    @run_history = RunHistory.limit(100).reorder('started')
 
    respond_to do |format|
      format.html 
@@ -11,18 +11,17 @@ class RunHistoryController < ApplicationController
   def show
     @run_history = RunHistory.find(params[:id])
     respond_to do |format|
-      format.html 
+      format.html {render :template=>"run_history/output"}
       format.json {render json: @run_history}
     end
   end
 
   def output
-    run_history =RunHistory.find(params[:id])
-  
-    @output = run_history.output
+    @run_history =RunHistory.find(params[:id])
+    @output = @run_history.output
     
     respond_to do |format|
-      format.html
+      format.html {render :layout=>false, :template=>'run_history/output'}
       format.json { render json: @output}
     end
   end

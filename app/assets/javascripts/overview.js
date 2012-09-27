@@ -7,24 +7,23 @@ $(document).ready(function(){
             url: $(this).attr("href") + ".json",
             dataType: "json", 
             success: function(data){
+                console.log("task running");
                 console.log(data);
-                var output = $('<div>').attr('id', 'output').addClass("output span6 ");
-                var title = $("<div>").addClass("span6");
-                title.append($('<h2>').addClass("title").html("Output"));
-                title.append($('<span>').addClass("status label label-info").html("Status: " + data.status));
-                output.append(title);
-
-                output.append($('<div>').addClass("span6 well prettyprint linenums").append($('<ol>').addClass("outputText linenums ")));
-                
-                $(".row").last().append(output);
-                latestInterval = setInterval("updateHistory("+data.history_id+")", 1500);
+                console.log("trying to get output from " +"run_history/"+data.history_id+"/output");
+                $.ajax({
+                    url:"run_history/"+data.history_id+"/output",
+                    success:function(html){
+                        console.log("success appending html");
+                        $("#task_output").append(html);
+                    }
+                });
             }
         });
         
         return false;
         });
 });
-
+/*
     function updateHistory(historyId){
            $.ajax({
                url:"run_history/" + historyId  + "/tail/" + currentOutputLength + ".json", 
@@ -46,5 +45,5 @@ $(document).ready(function(){
                 }
            });
     }
-    
+    */
 

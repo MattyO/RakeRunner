@@ -17,12 +17,14 @@
 
     <% @rake_tasks.each do |rake_task| %>
       <tr>
-        <td><%= rake_task.task %></td>
+        <td><%= link_to rake_task.task, rake_task %></td>
         <td><%= rake_task.rake_file.file_name %></td>
         <td> <a class="btn runTask" data-taskId="<%= rake_task.id %>" href= <%= "/run/#{rake_task.rake_file.file_name}/#{rake_task.task}"%>> Run </a></td>
       </tr>
     <% end %>
     </table>
+  </div>
+  <div id="task_output" class="span6">
   </div>
 </div>
 
