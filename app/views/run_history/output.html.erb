@@ -1,0 +1,43 @@
+<div id="output" class="<%= "run_history-#{@run_history.id}"%>"> 
+  <div class="span6"> 
+    <h2 class="title"> Output </h2>
+    <span class="status label label-info"> <%= @run_history.status %> </span>
+  </div>
+  <div class="span6 well prettyprint linenums"> 
+    <ol class="outputText"> 
+      <% counter = 0 %>
+      <% output = @run_history.output %>
+      <% output[:by_line].values.each do |line| %>
+        <li class="<%="L#{counter}"%>"> <%=line%> </li>
+        <% counter += 1 %>
+      <% end %>
+    </ol>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var historyid<%= @run_history.id%> = -1;
+  var currentOutputLength<%= @run_history.id%> = <%= counter %>;
+  historyid<%= @run_history.id%> = setInterval("<%= "updateHistory#{@run_history.id}(#{@run_history.id})"%>",1500) ;
+
+    function updateHistory<%= @run_history.id%>(historyId){
+           $.ajax({
+               url:"/run_history/" + historyId  + "/tail/" + currentOutputLength<%= @run_history.id%> + ".json", 
+               dataType:"json",
+                success: function(data){
+                    $(".run_history-<%= @run_history.id %> .status").html("Status: " + data.status);
+                    for(line_key in data.by_line){
+                        $(".run_history-<%= @run_history.id %> ol").append($('<li>').addClass("L"+currentOutputLength<%= @run_history.id%>).html(data.by_line[line_key]));
+                        currentOutputLength<%= @run_history.id%>++;
+
+                    }
+                    
+                    if(data.status == 'finished'){
+                        clearInterval(historyid<%= @run_history.id%>);
+                        currentOutputLength<%= @run_history.id%> = 0;
+                    }
+                }
+           });
+    }
+</script>
+
