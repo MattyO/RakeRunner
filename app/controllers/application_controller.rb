@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :current_user
+  before_filter :require_user
 
   private 
     def current_user
@@ -12,8 +12,9 @@ class ApplicationController < ActionController::Base
     end
 
     def require_user
-      if current_user = nil
-        redirect_to 'login' 
+      puts "trying to require user"
+      if current_user == nil
+        render 'users/login' 
       end
     end
 end

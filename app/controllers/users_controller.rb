@@ -1,13 +1,23 @@
+require 'bcrypt'
+
 class UsersController < ApplicationController
+  include BCrypt
   # GET /users
   # GET /users.json
+  skip_before_filter :require_user, :only =>:login
 
   def login
     if request.post? 
       #redirect to root url with flash
-      user = params[:user] 
-      user = User.where(:email=>user[:email], :password=>user[:password]).first;
+      form_user = params[:user] 
+      user = User.where(:email=>form_user[:email]).first;
+      
+      if user.password != form_user[:password]
+        user = nil
+      end
+
       if user != nil
+        puts "setting user in sesssion"
         session[User.sessionSymbol] = user.id
         redirect_to root_path
       else
@@ -18,6 +28,7 @@ class UsersController < ApplicationController
 
   def logout
     session[User.sessionSymbol] = nil
+    @user = nil
   end
 
   def index

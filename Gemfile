@@ -10,6 +10,7 @@ gem 'mysql2'
 gem 'twilio-ruby'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'bcrypt-ruby'
 
 
 # Gems used only for assets and not required

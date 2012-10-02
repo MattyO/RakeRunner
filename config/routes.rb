@@ -21,7 +21,7 @@ Rakerunner::Application.routes.draw do
 
   match 'login' => 'users#login'
   
-  match 'logout' => 'user#logout'
+  match 'logout' => 'users#logout'
 
   match 'run_history/:id/output' => 'run_history#output'
 
