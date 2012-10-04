@@ -8,9 +8,9 @@ Purpose and Objectives
 
 How to Use
 ----------
-#install RakeRunner
-#upload rake file
-#run rake file
+1. install RakeRunner
+2. upload rake file
+3. run rake file
 
 Running rake files
 ------------------
