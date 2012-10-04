@@ -14,7 +14,7 @@
 /log/*.log
 /tmp
 
-/private/output/*
+/private/output/*.txt
 
 /private/rake_files/*.rake
 
