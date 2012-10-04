@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/private/output/*
+
+/private/rake_files/*.rake
+
+.DS_STORE
