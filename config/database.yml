@@ -7,7 +7,7 @@ development:
   adapter: mysql2
   database: rake_runner 
   username: user_rake_runner
-  password: t3st
+  password: not_it
   host: localhost
   #pool: 5
   #timeout: 5000
@@ -25,7 +25,7 @@ production:
   adapter: mysql2
   database: rakerunner 
   username: user_rakerunner
-  password: pr0d
+  password: not_it
   host: localhost
   pool: 5
   timeout: 5000
